@@ -1,9 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 
-const PORT = process.env.PORT || 3001;
+//error handlers
+const errorHandler = require("./errors/errorHandler");
+const notFound = require("./errors/notFound");
+//router path
 
 const app = express();
 
+/* ----- csv parse/sync code -------
 import assert from 'assert';
 import { parse } from 'csv-parse/sync';
 
@@ -19,6 +24,7 @@ assert.deepStrictEqual(
   records,
   [{ key_1: 'value 1', key_2: 'value 2' }]
 );
+*/ 
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
