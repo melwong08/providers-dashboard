@@ -4,9 +4,19 @@ const cors = require("cors");
 //error handlers
 const errorHandler = require("./errors/errorHandler");
 const notFound = require("./errors/notFound");
-//router path
+//router paths
 
 const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+//use routes
+// app.use("/reservations", reservationsRouter);
+// app.use("/tables", tablesRouter);
+
+app.use(notFound);
+app.use(errorHandler);
 
 /* ----- csv parse/sync code -------
 import assert from 'assert';
@@ -33,3 +43,5 @@ app.get("/api", (req, res) => {
   app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
   });
+
+module.exports = app;
