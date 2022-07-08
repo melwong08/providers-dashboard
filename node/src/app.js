@@ -18,9 +18,9 @@ app.use(express.json());
 app.use(notFound);
 app.use(errorHandler);
 
-/* ----- csv parse/sync code -------
+// ----- csv parse/sync code -------
 import assert from 'assert';
-import { parse } from 'csv-parse/sync';
+import { parse } from 'csv-parse';
 
 const input = `
 "key_1","key_2"
@@ -34,6 +34,5 @@ assert.deepStrictEqual(
   records,
   [{ key_1: 'value 1', key_2: 'value 2' }]
 );
-*/ 
 
 module.exports = app;
