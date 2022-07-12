@@ -79,7 +79,7 @@ export const jobs = [
         dateTime: '2021-06-06 01:07:33',
         status: 'COMPLETE',
         providerId: 1,
-        avgCostPerPage: 550
+        avgCostPerPage: 550,
         materialsTurnInAt: '2021-06-14 01:07:33',
         providerRating: true,
         locationType: 'REMOTE',
@@ -249,7 +249,7 @@ export const jobs = [
         providerId: 1,
         avgCostPerPage: null,
         materialsTurnInAt: null,
-        providerRating: null,
+        providerRating: false,
         locationType: 'LOCATION_BASED',
         latitude: '34.0165128',
         longitude: '-118.4939147'
@@ -261,7 +261,7 @@ export const jobs = [
         providerId: 1,
         avgCostPerPage: null,
         materialsTurnInAt: null,
-        providerRating: null,
+        providerRating: false,
         locationType: 'LOCATION_BASED',
         latitude: '34.0165128',
         longitude: '-118.4939147'
@@ -273,7 +273,7 @@ export const jobs = [
         providerId: 2,
         avgCostPerPage: null,
         materialsTurnInAt: null,
-        providerRating: null,
+        providerRating: false,
         locationType: 'REMOTE',
         latitude: null,
         longitude: null
@@ -285,7 +285,7 @@ export const jobs = [
         providerId: 2,
         avgCostPerPage: null,
         materialsTurnInAt: null,
-        providerRating: null,
+        providerRating: false,
         locationType: 'LOCATION_BASED',
         latitude: '34.0165128',
         longitude: '-118.4939147'
@@ -297,7 +297,7 @@ export const jobs = [
         providerId: 3,
         avgCostPerPage: null,
         materialsTurnInAt: null,
-        providerRating: null,
+        providerRating: false,
         locationType: 'LOCATION_BASED',
         latitude: '34.0165128',
         longitude: '-118.4939147'
@@ -309,7 +309,7 @@ export const jobs = [
         providerId: 4,
         avgCostPerPage: null,
         materialsTurnInAt: null,
-        providerRating: null,
+        providerRating: false,
         locationType: 'REMOTE',
         latitude: null,
         longitude: null
@@ -321,7 +321,7 @@ export const jobs = [
         providerId: 4,
         avgCostPerPage: null,
         materialsTurnInAt: null,
-        providerRating: null,
+        providerRating: false,
         locationType: 'LOCATION_BASED',
         latitude: '34.0165128',
         longitude: '-118.4939147'
@@ -333,7 +333,7 @@ export const jobs = [
         providerId: 4,
         avgCostPerPage: null,
         materialsTurnInAt: null,
-        providerRating: null,
+        providerRating: false,
         locationType: 'LOCATION_BASED',
         latitude: '34.0165128',
         longitude: '-118.4939147'
@@ -345,79 +345,79 @@ export const jobs = [
         providerId: null,
         avgCostPerPage: null,
         materialsTurnInAt: null,
-        providerRating:
+        providerRating: false,
         locationType: 'LOCATION_BASED',
         latitude: '34.008454',
         longitude: '-118.498543'
     },
     {
         id: 27,
-        dateTime:
+        dateTime: '2021-07-22 12:09:57',
         status: 'SCHEDULED',
-        providerId:
-        avgCostPerPage:
-        materialsTurnInAt:
-        providerRating:
+        providerId: null,
+        avgCostPerPage: null,
+        materialsTurnInAt: null,
+        providerRating: false,
         locationType: 'LOCATION_BASED',
         latitude: '34.057388',
         longitude: '-118.248034'
     },
     {
         id: 28,
-        dateTime:
+        dateTime: '2021-07-20 12:09:57',
         status: 'SCHEDULED',
-        providerId:
-        avgCostPerPage:
-        materialsTurnInAt:
-        providerRating:
+        providerId: null,
+        avgCostPerPage: null,
+        materialsTurnInAt: null,
+        providerRating: false,
         locationType: 'LOCATION_BASED',
         latitude: '34.054018',
         longitude: '-118.412388'
     },
     {
         id: 29,
-        dateTime:
+        dateTime: '2021-07-19 11:41:09',
         status: 'SCHEDULED',
-        providerId:
-        avgCostPerPage:
-        materialsTurnInAt:
-        providerRating:
+        providerId: null,
+        avgCostPerPage: null,
+        materialsTurnInAt: null,
+        providerRating: false,
         locationType: 'REMOTE',
         latitude: '34.054018',
         longitude: '-118.412388'
     },
     {
         id: 30,
-        dateTime:
+        dateTime: '2021-07-23 13:36:21',
         status: 'SCHEDULED',
-        providerId:
-        avgCostPerPage:
-        materialsTurnInAt:
-        providerRating:
+        providerId: null,
+        avgCostPerPage: null,
+        materialsTurnInAt: null,
+        providerRating: false,
         locationType: 'REMOTE',
         latitude: '34.054018',
         longitude: '-118.412388'
     },
     {
         id: 31,
-        dateTime:
+        dateTime: '2021-07-23 13:36:21',
         status: 'SCHEDULED',
-        providerId:
-        avgCostPerPage:
-        materialsTurnInAt:
-        providerRating:
+        providerId: null,
+        avgCostPerPage: null,
+        materialsTurnInAt: null,
+        providerRating: false,
         locationType: 'REMOTE',
         latitude: '34.054018',
         longitude: '-118.412388'
     },
     {
         id: 32,
-        dateTime:
+        dateTime: '2021-07-24 11:48:21',
         status: 'SCHEDULED',
-        providerId:
-        avgCostPerPage:
-        materialsTurnInAt:
-        providerRating:
+        providerId: null,
+        avgCostPerPage: null,
+        materialsTurnInAt: null,
+        providerRating: false,
         locationType: 'REMOTE',
         latitude: '34.054018',
         longitude: '-118.412388'
