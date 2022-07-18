@@ -10,12 +10,16 @@ import { providers, jobs } from './data.js'
 //     console.log(job.id + ' = ' +job.status)
 // }
 
+//iterate through providers
+//iterate through jobs
+//if job has a rating, return the provider associated with that
 for (let i = 0; i < providers.length; i++) {
     const provider = providers[i];
     for (let j = 0; j < jobs.length; j++){
         const job = jobs[j];
         if (job.providerRating === true){
             console.log(provider.fullName)
+            //if id matches the id in provider
         }
     }
 }
