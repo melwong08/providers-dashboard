@@ -10,7 +10,7 @@ import { providers, jobs } from './data.js'
 //     console.log(job.id + ' = ' +job.status)
 // }
 
-for (let i = 0; i < jobs.length; i++) {
+for (let i = 0; i < providers.length; i++) {
     const provider = providers[i];
     for (let j = 0; j < jobs.length; j++){
         const job = jobs[j];
