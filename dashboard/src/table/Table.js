@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function Table (){
     <div>
-        Table
+        <h2>Table</h2>
     </div>
 }
 
