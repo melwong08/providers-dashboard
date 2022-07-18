@@ -9,3 +9,8 @@ app.get("/api", (req, res) => {
   app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
   });
+
+//create jobs routes & display all jobs and provider info on server page
+//query the jobs for scheduled jobs
+//can also query for   
+//start separating out functions and layers, carve out single path for routes
