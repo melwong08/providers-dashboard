@@ -1,7 +1,7 @@
 const PORT = process.env.PORT || 3001;
 
-const app = require("./app");
-const data = require("./data/data");
+const app = import("./app");
+const data = import("./data/data");
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
