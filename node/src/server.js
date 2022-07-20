@@ -1,5 +1,7 @@
 import express from 'express';
-  
+import {providers, jobs} from 'data/data.js';
+// const data = import("./data/data")
+
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -9,7 +11,7 @@ app.get("/api", (req, res) => {
   });
 
 app.get("/jobs", (req, res) => {
-    res.json("data")
+    res.json({jobs})
   });
   
 app.listen(PORT, () => {
