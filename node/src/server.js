@@ -1,14 +1,13 @@
-const PORT = process.env.PORT || 3001;
-
 const app = import("./app");
-const data = import("./data/data");
+
+const PORT = process.env.PORT || 3001;
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
   });
 
 app.get("/jobs", (req, res) => {
-    res.json({data})
+    res.json("data")
   });
   
 app.listen(PORT, () => {

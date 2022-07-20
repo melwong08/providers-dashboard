@@ -1,9 +1,9 @@
-const express = require("express");
-const cors = require("cors");
+const express = import("express");
+const cors = import("cors");
 
 //error handlers
-const errorHandler = require("./errors/errorHandler");
-const notFound = require("./errors/notFound");
+const errorHandler = import("./errors/errorHandler");
+const notFound = import("./errors/notFound");
 //router paths
 
 const app = express();
