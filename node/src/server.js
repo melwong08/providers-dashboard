@@ -1,6 +1,6 @@
 import express from 'express';
-import {providers, jobs} from './data/data';
-// const data = import("./data/data")
+//import {providers, jobs} from './data/data';
+//const data = import("./data/data")
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.get("/api", (req, res) => {
   });
 
 app.get("/jobs", (req, res) => {
-    res.json({jobs})
+    res.json("Jobs page")
   });
   
 app.listen(PORT, () => {
