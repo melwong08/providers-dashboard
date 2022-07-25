@@ -1,5 +1,5 @@
 import express from 'express';
-import {providers, jobs} from 'data/data.js';
+import {providers, jobs} from './data/data';
 // const data = import("./data/data")
 
 const app = express();
