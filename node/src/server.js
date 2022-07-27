@@ -10,8 +10,10 @@ app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
   });
 
-app.get("/jobs", (req, res) => {
-    res.json("Jobs page")
+app.get("/jobs/:id", (req, res) => {
+  console.log(req.query);
+  const jobId = req.query.id;
+  res.send(jobId);
   });
   
 app.listen(PORT, () => {
