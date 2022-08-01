@@ -1,4 +1,4 @@
-module.exports.providers = [
+export const providers = [
     {
         id: 1,
         fullName: 'Joe Court Reporter',
@@ -37,7 +37,7 @@ module.exports.providers = [
     }
 ]
 
-module.exports.jobs = [
+export const jobs = [
     {
         id: 1,
         dateTime: '2021-06-03 08:19:33',
