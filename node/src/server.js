@@ -1,6 +1,8 @@
 import express from 'express';
 //import {providers, jobs} from '../data/data';
-const data = import("../data/data.js")
+//const data = import("../data/data.js")
+const jobs = import("../data/jobs.js");
+const providers = import("../data/providers.js")
 
 const app = express();
 
@@ -13,15 +15,15 @@ app.get("/api", (req, res) => {
 app.get("/jobs:id", (req, res) => {
   console.log(req.params.id);
   const jobId = req.params.id;
-  const job = findJobId(data.jobs, jobId);
+  const job = findJobId(jobs.jobs, jobId);
 
   if (job === null) res.status(404).send("Not Found")
   
-  res.send(data);
+  res.send(job);
   });
 
 app.get("jobs", (req, res) => {
-  res.send(data.jobs);
+  res.send(jobs.jobs);
 })
   
 app.listen(PORT, () => {
