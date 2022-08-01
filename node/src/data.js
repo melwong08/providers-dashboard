@@ -1,4 +1,4 @@
-const providers = [
+module.exports.providers = [
     {
         id: 1,
         fullName: 'Joe Court Reporter',
@@ -37,7 +37,7 @@ const providers = [
     }
 ]
 
-const jobs = [
+module.exports.jobs = [
     {
         id: 1,
         dateTime: '2021-06-03 08:19:33',
@@ -424,6 +424,5 @@ const jobs = [
     }
 ]
 
-module.exports = jobs;
 
 // Note, these could also be dictionaries or key/value pairs (which are really just objects) instead of arrays
