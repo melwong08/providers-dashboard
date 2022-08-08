@@ -1,8 +1,5 @@
 import express from 'express';
 import { providers, jobs } from './data/data.js';
-// const data = import("./data.js")
-// const jobs = import("../data/jobs.js");
-// const providers = import("../data/providers.js")
 
 const app = express();
 
@@ -22,23 +19,41 @@ app.get("/jobs/status/:status", (req, res) => {
 })
 
 app.get("/jobs/:id", (req, res) => {
-  //console.log(req.params.id);
   const jobId = req.params.id;
   const job = findJobId(jobs, jobId);
-  // const scheduledJob = findScheduledJob();
 
   if (job === null) res.status(404).send("Job Not Found");
 
   res.json(job);
 });
 
+app.get("/providers/:id", (req, res) => {
+  const providerId = req.params.id;
+  const provider = findProviderId(providers, providerId);
+
+  if (provider === null) res.status(404).send("Provider Not Found");
+
+  res.json(provider);
+});
+
 app.get("/jobs", (req, res) => {
   res.json(jobs);
+})
+
+app.get("/providers", (req, res) => {
+  res.json(providers);
 })
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
+
+function findProviderId(providers, id) {
+  for (let i = 0; i < providers.length; i++) {
+    if (providers[i].id == id) return providers[i];
+  }
+  return null;
+}
 
 function findJobId(jobs, id) {
   for (let i = 0; i < jobs.length; i++) {
@@ -48,14 +63,10 @@ function findJobId(jobs, id) {
 }
 
 function findStatus(jobs, status) {
-  // for (let i = 0; i < jobs.length; i++) {
-  //   if (jobs[i].status.toLowerCase().replace(' ','') == status) return jobs[i];
-  // }
-  // return null;
   let statusAll = [];
   for (let i = 0; i < jobs.length; i++) {
     if (jobs[i].status.toLowerCase().replace(' ','') == status) 
-    statusAll += jobs[i];
+    statusAll.push(jobs[i]);
   }
   return statusAll;
 }
