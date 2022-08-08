@@ -48,10 +48,16 @@ function findJobId(jobs, id) {
 }
 
 function findStatus(jobs, status) {
+  // for (let i = 0; i < jobs.length; i++) {
+  //   if (jobs[i].status.toLowerCase().replace(' ','') == status) return jobs[i];
+  // }
+  // return null;
+  let statusAll = [];
   for (let i = 0; i < jobs.length; i++) {
-    if (jobs[i].status.toLowerCase() == status) return jobs[i];
+    if (jobs[i].status.toLowerCase().replace(' ','') == status) 
+    statusAll += jobs[i];
   }
-  return null;
+  return statusAll;
 }
 
 //create jobs routes & display all jobs and provider info on server page
