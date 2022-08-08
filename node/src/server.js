@@ -49,7 +49,7 @@ function findJobId(jobs, id) {
 
 function findStatus(jobs, status) {
   for (let i = 0; i < jobs.length; i++) {
-    if (jobs[i].status === status) return jobs[i];
+    if (jobs[i].status.toLowerCase() == status) return jobs[i];
   }
   return null;
 }
