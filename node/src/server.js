@@ -12,11 +12,13 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
-app.get("/jobs/scheduled", (req, res) => {
+app.get("/jobs/status/:status", (req, res) => {
   const currentStatus = req.params.status;
-  const scheduled = findStatus(jobs, currentStatus);
+  const status = findStatus(jobs, currentStatus);
 
-  res.json(scheduled)
+  if (status === null) res.status(404).send("Status Not Found");
+
+  res.json(status)
 })
 
 app.get("/jobs/:id", (req, res) => {
@@ -25,7 +27,7 @@ app.get("/jobs/:id", (req, res) => {
   const job = findJobId(jobs, jobId);
   // const scheduledJob = findScheduledJob();
 
-  if (job === null) res.status(404).send("Not Found");
+  if (job === null) res.status(404).send("Job Not Found");
 
   res.json(job);
 });
@@ -45,9 +47,9 @@ function findJobId(jobs, id) {
   return null;
 }
 
-function findStatus(jobs, scheduled) {
+function findStatus(jobs, status) {
   for (let i = 0; i < jobs.length; i++) {
-    if (jobs[i].status === "SCHEDULED") return jobs[i];
+    if (jobs[i].status === status) return jobs[i];
   }
   return null;
 }
