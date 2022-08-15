@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./Table.css";
-import JobsData from "./JobsData.js";
 
 function Table(props) {
     const [data, setData] = useState(null);
@@ -13,7 +12,7 @@ function Table(props) {
     useEffect(() => {
         fetchJobsData(props.id);
       }, [props.id]);
-    
+
       if (!data) {
         return "loading...";
       }
@@ -22,31 +21,34 @@ function Table(props) {
         <div>
             <h1>Jobs</h1>
             <table>
-                <tr>
-                    <th>Id</th>
-                    <th>Date/Time</th>
-                    <th>Status</th>
-                    <th>Provider Id</th>
-                    <th>Average Cost per Page (cents)</th>
-                    <th>Materials Turned in At</th>
-                    <th>Provider Rating</th>
-                    <th>Location Type</th>
-                    <th>Latitude</th>
-                    <th>Longitude</th>
-                </tr>
-                <tr>
-                    <th>table data</th>
-                    <th>table data</th>
-                    <th>table data</th>
-                    <th>table data</th>
-                    <th>table data</th>
-                    <th>table data</th>
-                    <th>table data</th>
-                    <th>table data</th>
-                    <th>table data</th>
-                    <th>table data</th>
-                </tr>
-                <JobsData />
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Date/Time</th>
+                        <th>Status</th>
+                        <th>Provider Id</th>
+                        <th>Average Cost per Page (cents)</th>
+                        <th>Materials Turned in At</th>
+                        <th>Provider Rating</th>
+                        <th>Location Type</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>table data 2</td>
+                        <td>table data 2</td>
+                        <td>table data 2</td>
+                        <td>table data 2</td>
+                        <td>table data 2</td>
+                        <td>table data 2</td>
+                        <td>table data 2</td>
+                        <td>table data 2</td>
+                        <td>table data 2</td>
+                        <td>table data 2</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     )
