@@ -1,7 +1,23 @@
-//import { usePagination, useTable, Column } from "react-table";
+import React, {useState, useEffect} from "react";
 import "./Table.css";
+import JobsData from "./JobsData.js";
 
-function Table() {
+function Table(props) {
+    const [data, setData] = useState(null);
+
+    async function fetchJobsData(id){
+        const response = await fetch("/" + id);
+        setData(await response.json)
+    }
+
+    useEffect(() => {
+        fetchJobsData(props.id);
+      }, [props.id]);
+    
+      if (!data) {
+        return "loading...";
+      }
+
     return (
         <div>
             <h1>Jobs</h1>
@@ -19,29 +35,18 @@ function Table() {
                     <th>Longitude</th>
                 </tr>
                 <tr>
-                    <td>Table item</td>
-                    <td>Table item 2</td>
-                    <td>Table item</td>
-                    <td>Table item 2</td>
-                    <td>Table item</td>
-                    <td>Table item 2</td>
-                    <td>Table item</td>
-                    <td>Table item 2</td>
-                    <td>Table item</td>
-                    <td>Table item 2</td>
+                    <th>table data</th>
+                    <th>table data</th>
+                    <th>table data</th>
+                    <th>table data</th>
+                    <th>table data</th>
+                    <th>table data</th>
+                    <th>table data</th>
+                    <th>table data</th>
+                    <th>table data</th>
+                    <th>table data</th>
                 </tr>
-                <tr>
-                    <td>Table item</td>
-                    <td>Table item 2</td>
-                    <td>Table item</td>
-                    <td>Table item 2</td>
-                    <td>Table item</td>
-                    <td>Table item 2</td>
-                    <td>Table item</td>
-                    <td>Table item 2</td>
-                    <td>Table item</td>
-                    <td>Table item 2</td>
-                </tr>
+                <JobsData />
             </table>
         </div>
     )
