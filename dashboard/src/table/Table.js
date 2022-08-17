@@ -29,20 +29,7 @@ function Table() {
         return data;
     });
 
-    const rows = jobsData.map(({id, datetime, status, provider_id, avg_cost_per_page, materials_turned_in_at, provider_rating, location_type, latitude, longitude}, index) => (
-        <tr key={index}>
-            <td>{id}</td>
-            <td>{datetime}</td>
-            <td>{status}</td>
-            <td>{provider_id}</td>
-            <td>{avg_cost_per_page}</td>
-            <td>{materials_turned_in_at}</td>
-            <td>{provider_rating}</td>
-            <td>{location_type}</td>
-            <td>{latitude}</td>
-            <td>{longitude}</td>
-        </tr>
-    ))
+    
 
     return (
         <div>
