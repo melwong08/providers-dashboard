@@ -5,21 +5,29 @@ const jobsData = [
     {id: 1, datetime: "2021-06-03 08:19:33", status: "COMPLETE", provider_id: 1, avg_cost_per_page: 550, materials_turned_in_at: "2021-06-13 10:43:33", provider_rating: true, location_type: "REMOTE", latitude: null, longitude: null}
 ]
 
-function Table(props) {
+function Table() {
+
+//function Table (jobs){
     // const [data, setData] = useState(null);
 
     // async function fetchJobsData(id){
-    //     const response = await fetch("/" + id);
+    //     const response = await fetch('/jobs');
     //     setData(await response.json)
     // }
 
     // useEffect(() => {
-    //     fetchJobsData(props.id);
-    //   }, [props.id]);
+    //     fetchJobsData(jobs.id);
+    //   }, [jobs.id]);
 
     //   if (!data) {
     //     return "loading...";
     //   }
+
+    fetch('/jobs')
+    .then((response) => response.json())
+    .then((data) => {
+        return data;
+    });
 
     const rows = jobsData.map(({id, datetime, status, provider_id, avg_cost_per_page, materials_turned_in_at, provider_rating, location_type, latitude, longitude}, index) => (
         <tr key={index}>
