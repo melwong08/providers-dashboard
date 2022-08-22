@@ -12,7 +12,7 @@ function Table (){
 
     useEffect(() => {
         async function fetchJobsData(){
-            const response = await fetch('jobs/status/scheduled');
+            const response = await fetch('http://localhost:3001/jobs/status/scheduled');
             const dataFromAPI = await response.json();
             setData(dataFromAPI);
         }
