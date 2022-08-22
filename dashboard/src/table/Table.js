@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./Table.css";
 
-let jobsData = [
-    {id: 2, datetime: "2021-06-03 08:19:33", status: "COMPLETE", provider_id: 1, avg_cost_per_page: 550, materials_turned_in_at: "2021-06-13 10:43:33", provider_rating: true, location_type: "REMOTE", latitude: null, longitude: null}
-]
+// let jobsData = [
+//     {id: 2, datetime: "2021-06-03 08:19:33", status: "COMPLETE", provider_id: 1, avg_cost_per_page: 550, materials_turned_in_at: "2021-06-13 10:43:33", provider_rating: true, location_type: "REMOTE", latitude: null, longitude: null}
+// ]
 
 //function Table() {
 
 function Table (){
     const [data, setData] = useState(null);
 
-    async function fetchJobsData(){
-        const response = await fetch('/jobs/status/scheduled');
-        setData(await response.json)
-    }
-
     useEffect(() => {
+        async function fetchJobsData(){
+            const response = await fetch('/jobs/status/scheduled');
+            const dataFromAPI = await response.json();
+            setData(dataFromAPI);
+        }
         fetchJobsData()
     }, [])
 
@@ -25,7 +25,9 @@ function Table (){
     //     jobsData = data;
     // });
 
-    const rows = jobsData.map(({id, datetime, status, provider_id, avg_cost_per_page, materials_turned_in_at, provider_rating, location_type, latitude, longitude}, index) => (
+    console.log(data)
+
+    const rows = data.map(({id, datetime, status, provider_id, avg_cost_per_page, materials_turned_in_at, provider_rating, location_type, latitude, longitude}, index) => (
         <tr key={index}>
             <td>{id}</td>
             <td>{datetime}</td>
