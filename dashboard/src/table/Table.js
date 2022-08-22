@@ -7,21 +7,17 @@ let jobsData = [
 
 //function Table() {
 
-function Table (jobs){
+function Table (){
     const [data, setData] = useState(null);
 
-    async function fetchJobsData(id){
+    async function fetchJobsData(){
         const response = await fetch('/jobs/status/scheduled');
         setData(await response.json)
     }
 
     useEffect(() => {
-        fetchJobsData(jobs.id);
-      }, [jobs.id]);
-
-      if (!data) {
-        return "loading...";
-      }
+        fetchJobsData()
+    }, [])
 
     // fetch('/jobs/status/scheduled')
     // .then((response) => response.json())
