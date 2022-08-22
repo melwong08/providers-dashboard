@@ -8,11 +8,11 @@ import "./Table.css";
 //function Table() {
 
 function Table (){
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         async function fetchJobsData(){
-            const response = await fetch('/jobs/status/scheduled');
+            const response = await fetch('jobs/status/scheduled');
             const dataFromAPI = await response.json();
             setData(dataFromAPI);
         }
