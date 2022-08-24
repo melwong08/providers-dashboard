@@ -5,8 +5,6 @@ import "./Table.css";
 //     {id: 2, datetime: "2021-06-03 08:19:33", status: "COMPLETE", provider_id: 1, avg_cost_per_page: 550, materials_turned_in_at: "2021-06-13 10:43:33", provider_rating: true, location_type: "REMOTE", latitude: null, longitude: null}
 // ]
 
-//function Table() {
-
 function Table (){
     const [data, setData] = useState([]);
 
