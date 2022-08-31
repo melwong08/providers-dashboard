@@ -70,9 +70,3 @@ function findStatus(jobs, status) {
   }
   return statusAll;
 }
-
-//create jobs routes & display all jobs and provider info on server page
-//query the jobs for scheduled jobs
-//can also query for   
-//start separating out functions and layers, carve out single path for routes
-//steno.com/jobs/?id=1
