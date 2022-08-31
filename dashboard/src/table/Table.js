@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Table.css";
 
 // let jobsData = [
@@ -10,9 +11,9 @@ function Table (){
 
     useEffect(() => {
         async function fetchJobsData(){
-            const response = await fetch('http://localhost:3001/jobs/status/scheduled');
-            const dataFromAPI = await response.json();
-            setData(dataFromAPI);
+            const response = await axios('http:localhost:3001/jobs/status/scheduled');
+            //const dataFromAPI = await response.json();
+            setData(response.json());
         }
         fetchJobsData()
     }, [])
