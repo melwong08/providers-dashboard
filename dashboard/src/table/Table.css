@@ -1,20 +1,17 @@
-.table {
-    border-spacing: 0;
-    border: 1px solid #0000;
-    width: 100%;
-  
-    tr:nth-child(2n) {
-      background-color: #fafafa;
-    }
-  
-    th {
-      padding: 15px;
-    }
-  
-    td {
-      padding: 5px 10px;
-    }
-  }
+tr {
+  border-spacing: 0;
+  border: 1px solid #ededed;
+  width: 100%;
+  background-color: #fafafa;
+}
+
+th {
+  padding: 15px;
+}
+
+td {
+  padding: 5px 10px;
+}
 
 .table-border {
     border: 2px solid #0000;
