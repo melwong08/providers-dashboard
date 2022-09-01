@@ -11,9 +11,9 @@ function Table (){
 
     useEffect(() => {
         async function fetchJobsData(){
-            const response = await axios('http:localhost:3001/jobs/status/scheduled');
-            //const dataFromAPI = await response.json();
-            setData(response.json());
+            const response = await axios('/jobs/status/scheduled');
+            const dataFromAPI = await response.json();
+            setData(dataFromAPI);
         }
         fetchJobsData()
     }, [])
