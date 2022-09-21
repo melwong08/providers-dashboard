@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./Table.css";
 
 // let jobsData = [
@@ -9,21 +8,21 @@ import "./Table.css";
 
 function Table (){
     const [data, setData] = useState([]);
+    const [providersData, setProvidersData] = useState([]);
 
     useEffect(() => {
-        async function fetchJobsData(){
-            const response = await axios('/jobs/status/scheduled');
-            const dataFromAPI = await response.json();
-            setData(dataFromAPI);
-        }
-        fetchJobsData()
-    }, [])
+        fetch('/jobs/status/scheduled')
+            .then((response) => response.json())
+            .then((res) => {
+                setData(res);
+            });
 
-    // fetch('/jobs/status/scheduled')
-    // .then((response) => response.json())
-    // .then((data) => {
-    //     jobsData = data;
-    // });
+        fetch('/providers')
+            .then((response) => response.json())
+            .then((res) => {
+                setProvidersData(res)
+            })
+    }, [])
 
     console.log(data)
 
