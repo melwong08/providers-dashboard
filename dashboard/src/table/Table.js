@@ -9,6 +9,7 @@ import "./Table.css";
 function Table (){
     const [data, setData] = useState([]);
     const [providersData, setProvidersData] = useState([]);
+    //const [jobId, setJobId] = useState([]);
 
     useEffect(() => {
         fetch('/jobs/status/scheduled')
@@ -25,6 +26,15 @@ function Table (){
     }, [])
 
     console.log(data)
+
+    const subrows = providersData.map(({id, fullName, latitude, longitude}, index) => (
+        <tr key={index}>
+            <td>{id}</td>
+            <td>{fullName}</td>
+            <td>{latitude}</td>
+            <td>{longitude}</td>
+        </tr>
+    ))
 
     const rows = data.map(({id, dateTime, status, providerId, avgCostPerPage, materialsTurnInAt, providerRating, locationType, latitude, longitude}, index) => (
         <tr key={index}>
@@ -61,6 +71,7 @@ function Table (){
                 </thead>
                 <tbody>
                     {rows}
+                    {subrows}
                 </tbody>
             </table>
         </div>
