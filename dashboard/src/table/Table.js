@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Table.css";
 
-axios.defaults.baseURL = "http://localhost:3001";
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = "http://localhost:3001";
-
 // let jobsData = [
 //     {id: 1, dateTime: "2021-06-03 08:19:33", status: "COMPLETE", providerId: 1, avgCostPerPage: 550, materialsTurnInAt: "2021-06-13 10:43:33", providerRating: true, locationType: "REMOTE", latitude: null, longitude: null},
 //     {id: 2, dateTime: '2021-06-04 03:31:33', status: 'COMPLETE', providerId: 1, avgCostPerPage: 625, materialsTurnInAt: '2021-06-13 15:31:33', providerRating: true, locationType: 'LOCATION_BASED', latitude: '34.0165128', longitude: '-118.4939147'}
