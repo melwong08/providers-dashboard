@@ -28,12 +28,13 @@ app.get("/jobs/:id", (req, res) => {
 });
 
 app.get("/providers/:id", (req, res) => {
-  const providerId = req.params.id;
-  const provider = findProviderId(providers, providerId);
+  const jobId = req.params.id;
+  const job = findJobId(jobId);
+  const sortedProviders = findProvidersForJob(providers, job);
 
-  if (provider === null) res.status(404).send("Provider Not Found");
+  if (sortedProviders.length === 0) res.status(404).send("Provider Not Found");
 
-  res.json(provider);
+  res.json(sortedProviders);
 });
 
 app.get("/jobs", (req, res) => {
@@ -48,11 +49,21 @@ app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
-function findProviderId(providers, id) {
-  for (let i = 0; i < providers.length; i++) {
-    if (providers[i].id == id) return providers[i];
+function findProvidersForJob(providers, job) {
+  if (job.locationType === 'REMOTE') {
+    return providers
   }
-  return null;
+
+  let providersRanked = new Map();
+  for (let i = 0; i < providers.length; i++) {
+    const provider = providers[i];
+    const lat = provider.latitude - job.latitude;
+    const long = provider.longitude - job.longitude;
+    providersRanked.set({score: lat + long}, {provider})
+  }
+  console.log(provider)
+
+  return providersRanked.sort((a, b) => a.score - b.score);
 }
 
 function findJobId(jobs, id) {

@@ -18,11 +18,11 @@ function Table (){
                 setJobsData(res);
             });
 
-        fetch('/providers')
-            .then((response) => response.json())
-            .then((res) => {
-                setProvidersData(res)
-            })
+        // fetch('/providers')
+        //     .then((response) => response.json())
+        //     .then((res) => {
+        //         setProvidersData(res)
+        //     })
     }, [])
 
     const subrows = providersData.map(({id, fullName, latitude, longitude}, index) => (
@@ -39,6 +39,12 @@ function Table (){
                 <button onClick={() => {
                         setJobId({id}); 
                         console.log({id});
+                        fetch('/providers')
+                            .then((response) => response.json())
+                            .then((res) => {
+                                setProvidersData(res)
+                            });
+                        console.log(providersData)
                         //onClick, set the order for the providers here?
                     }}>{id}</button>
                 <td>{dateTime}</td>
