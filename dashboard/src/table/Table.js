@@ -39,13 +39,12 @@ function Table (){
                 <button onClick={() => {
                         setJobId({id}); 
                         console.log({id});
-                        fetch('/providers')
+                        fetch('/providers/:id')
                             .then((response) => response.json())
                             .then((res) => {
                                 setProvidersData(res)
                             });
                         console.log(providersData)
-                        //onClick, set the order for the providers here?
                     }}>{id}</button>
                 <td>{dateTime}</td>
                 <td>{status}</td>

@@ -49,19 +49,22 @@ app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
-function findProvidersForJob(providers, job) {
-  if (job.locationType === 'REMOTE') {
-    return providers
+function findProvidersForJob(providers, jobs) {
+  for (let i = 0; i < jobs.length; i++){
+    if (jobs[i].locationType === 'REMOTE') {
+      return providers
+    }
   }
 
-  let providersRanked = new Map();
+  let providersRanked = [];
   for (let i = 0; i < providers.length; i++) {
     const provider = providers[i];
-    const lat = provider.latitude - job.latitude;
-    const long = provider.longitude - job.longitude;
-    providersRanked.set({score: lat + long}, {provider})
+    const lat = provider.latitude - jobs.latitude;
+    const long = provider.longitude - jobs.longitude;
+    const score = lat + long;
+    providersRanked.push({score, provider})
   }
-  console.log(provider)
+  console.log(providersRanked)
 
   return providersRanked.sort((a, b) => a.score - b.score);
 }
