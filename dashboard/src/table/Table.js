@@ -36,7 +36,11 @@ function Table (){
 
     const rows = jobsData.map(({id, dateTime, status, providerId, avgCostPerPage, materialsTurnInAt, providerRating, locationType, latitude, longitude}, index) => (
             <tr key={index}>
-                <button onClick={() => setJobId({id})}>{id}</button>
+                <button onClick={() => {
+                        setJobId({id}); 
+                        console.log({id});
+                        //onClick, set the order for the providers here?
+                    }}>{id}</button>
                 <td>{dateTime}</td>
                 <td>{status}</td>
                 <td>{providerId}</td>
@@ -69,7 +73,7 @@ function Table (){
                 </thead>
                 <tbody>
                     {rows}
-                    {jobId.id}
+                    {subrows}
                 </tbody>
             </table>
         </div>
