@@ -1,50 +1,54 @@
-//import React, { useState, useEffect } from "react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Table.css";
 
-this.setState({jobsData : [
-    {id: 2, datetime: "2021-06-03 08:19:33", status: "COMPLETE", provider_id: 1, avg_cost_per_page: 550, materials_turned_in_at: "2021-06-13 10:43:33", provider_rating: true, location_type: "REMOTE", latitude: null, longitude: null}
-]})
+// let jobsData = [
+//     {id: 1, dateTime: "2021-06-03 08:19:33", status: "COMPLETE", providerId: 1, avgCostPerPage: 550, materialsTurnInAt: "2021-06-13 10:43:33", providerRating: true, locationType: "REMOTE", latitude: null, longitude: null},
+//     {id: 2, dateTime: '2021-06-04 03:31:33', status: 'COMPLETE', providerId: 1, avgCostPerPage: 625, materialsTurnInAt: '2021-06-13 15:31:33', providerRating: true, locationType: 'LOCATION_BASED', latitude: '34.0165128', longitude: '-118.4939147'}
+// ]
 
-function Table() {
+function Table (){
+    const [data, setData] = useState([]);
+    const [providersData, setProvidersData] = useState([]);
+    //const [jobId, setJobId] = useState([0]);
 
-//function Table (jobs){
-    // const [data, setData] = useState(null);
+    useEffect(() => {
+        fetch('/jobs/status/scheduled')
+            .then((response) => response.json())
+            .then((res) => {
+                setData(res);
+            });
 
-    // async function fetchJobsData(id){
-    //     const response = await fetch('/jobs');
-    //     setData(await response.json)
-    // }
+        fetch('/providers')
+            .then((response) => response.json())
+            .then((res) => {
+                setProvidersData(res)
+            })
+    }, [])
 
-    // useEffect(() => {
-    //     fetchJobsData(jobs.id);
-    //   }, [jobs.id]);
+    console.log(data)
 
-    //   if (!data) {
-    //     return "loading...";
-    //   }
-
-    fetch('/jobs/status/scheduled')
-    .then((response) => response.json())
-    .then((data) => {
-        this.setState({
-            jobsData : data
-        })
-    });
-
-    const rows = this.state.jobsData.map(({id, datetime, status, provider_id, avg_cost_per_page, materials_turned_in_at, provider_rating, location_type, latitude, longitude}, index) => (
+    const subrows = providersData.map(({id, fullName, latitude, longitude}, index) => (
         <tr key={index}>
             <td>{id}</td>
-            <td>{datetime}</td>
-            <td>{status}</td>
-            <td>{provider_id}</td>
-            <td>{avg_cost_per_page}</td>
-            <td>{materials_turned_in_at}</td>
-            <td>{provider_rating}</td>
-            <td>{location_type}</td>
+            <td>{fullName}</td>
             <td>{latitude}</td>
             <td>{longitude}</td>
         </tr>
+    ))
+
+    const rows = data.map(({id, dateTime, status, providerId, avgCostPerPage, materialsTurnInAt, providerRating, locationType, latitude, longitude}, index) => (
+            <tr key={index}>
+                <td>{id}</td>
+                <td>{dateTime}</td>
+                <td>{status}</td>
+                <td>{providerId}</td>
+                <td>{avgCostPerPage}</td>
+                <td>{materialsTurnInAt}</td>
+                <td>{providerRating}</td>
+                <td>{locationType}</td>
+                <td>{latitude}</td>
+                <td>{longitude}</td>
+            </tr>
     ))
 
     return (
@@ -67,6 +71,7 @@ function Table() {
                 </thead>
                 <tbody>
                     {rows}
+                    {subrows}
                 </tbody>
             </table>
         </div>

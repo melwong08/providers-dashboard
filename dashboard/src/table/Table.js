@@ -7,15 +7,15 @@ import "./Table.css";
 // ]
 
 function Table (){
-    const [data, setData] = useState([]);
+    const [jobsData, setJobsData] = useState([]);
     const [providersData, setProvidersData] = useState([]);
-    //const [jobId, setJobId] = useState([]);
+    const [jobId, setJobId] = useState([0]);
 
     useEffect(() => {
         fetch('/jobs/status/scheduled')
             .then((response) => response.json())
             .then((res) => {
-                setData(res);
+                setJobsData(res);
             });
 
         fetch('/providers')
@@ -24,8 +24,6 @@ function Table (){
                 setProvidersData(res)
             })
     }, [])
-
-    console.log(data)
 
     const subrows = providersData.map(({id, fullName, latitude, longitude}, index) => (
         <tr key={index}>
@@ -36,19 +34,19 @@ function Table (){
         </tr>
     ))
 
-    const rows = data.map(({id, dateTime, status, providerId, avgCostPerPage, materialsTurnInAt, providerRating, locationType, latitude, longitude}, index) => (
-        <tr key={index}>
-            <td>{id}</td>
-            <td>{dateTime}</td>
-            <td>{status}</td>
-            <td>{providerId}</td>
-            <td>{avgCostPerPage}</td>
-            <td>{materialsTurnInAt}</td>
-            <td>{providerRating}</td>
-            <td>{locationType}</td>
-            <td>{latitude}</td>
-            <td>{longitude}</td>
-        </tr>
+    const rows = jobsData.map(({id, dateTime, status, providerId, avgCostPerPage, materialsTurnInAt, providerRating, locationType, latitude, longitude}, index) => (
+            <tr key={index}>
+                <button onClick={() => setJobId({id})}>{id}</button>
+                <td>{dateTime}</td>
+                <td>{status}</td>
+                <td>{providerId}</td>
+                <td>{avgCostPerPage}</td>
+                <td>{materialsTurnInAt}</td>
+                <td>{providerRating}</td>
+                <td>{locationType}</td>
+                <td>{latitude}</td>
+                <td>{longitude}</td>
+            </tr>
     ))
 
     return (
@@ -71,7 +69,7 @@ function Table (){
                 </thead>
                 <tbody>
                     {rows}
-                    {subrows}
+                    {jobId.id}
                 </tbody>
             </table>
         </div>
