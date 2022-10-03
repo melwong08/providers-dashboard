@@ -17,8 +17,8 @@ function Table (){
     const rows = jobsData.map(({id, dateTime, status, providerId, avgCostPerPage, materialsTurnInAt, providerRating, locationType, latitude, longitude}, index) => (
             <tr key={index}>
                 <button onClick={() => {
-                        setJobId({id}); 
-                        console.log({id});
+                        setJobId(id); 
+                        console.log(jobId);
                         fetch(`/providers/:${jobId}`)
                             .then((response) => response.json())
                             .then((res) => {
