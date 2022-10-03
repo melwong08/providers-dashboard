@@ -24,6 +24,7 @@ function Table (){
                             .then((res) => {
                                 setProvidersData(res)
                             });
+                            
                         console.log(providersData)
                     }}>{id}</button>
                 <td>{dateTime}</td>
