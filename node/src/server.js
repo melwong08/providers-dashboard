@@ -27,10 +27,20 @@ app.get("/jobs/:id", (req, res) => {
   res.json(job);
 });
 
+app.get("/provders/:id/turnover", (req, res) => {
+  const jobId = req.params.id;
+  const job = findJobById(jobs,jobId);
+  const ratedProviders = findProvidersByTurnover(providers, job);
+
+  if (ratedProviders.length === 0) res.status(404).send("Provider Not Found");
+
+  res.json(ratedProviders);
+})
+
 app.get("/providers/:id", (req, res) => {
   const jobId = req.params.id;
   const job = findJobById(jobs, jobId);
-  const sortedProviders = findProvidersForJob(providers, job);
+  const sortedProviders = findProvidersByLocation(providers, job);
 
   if (sortedProviders.length === 0) res.status(404).send("Provider Not Found");
 
@@ -56,7 +66,7 @@ function findJobById(jobs, id) {
   return null;
 }
 
-function findProvidersForJob(providers, job) {
+function findProvidersByLocation(providers, job) {
     if (job.locationType === 'REMOTE') {
       return providers
     }
@@ -69,6 +79,15 @@ function findProvidersForJob(providers, job) {
     providersRanked.push({score: lat+long, provider})
   }
   return providersRanked.sort((a, b) => a.score - b.score);
+}
+
+function findProvidersByTurnover(providers, job){
+    let jobTurnover = [];
+      for (let j = 0; j < providers.length; j++){
+        if (providers.id === job.providerId && job.materialsTurnInAt.length !== 0){
+          
+        }
+      }
 }
 
 function findStatus(jobs, status) {
