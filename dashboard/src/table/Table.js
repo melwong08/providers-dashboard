@@ -4,7 +4,7 @@ import "./Table.css";
 function Table (){
     const [jobsData, setJobsData] = useState([]);
     const [providersData, setProvidersData] = useState([]);
-    const [jobId, setJobId] = useState([0]);
+    const [jobId, setJobId] = useState(0);
 
     useEffect(() => {
         fetch('/jobs/status/scheduled')
@@ -18,8 +18,8 @@ function Table (){
             <tr key={index}>
                 <button onClick={() => {
                         setJobId(id); 
-                        console.log(jobId);
-                        fetch(`/providers/:${jobId}`)
+                        console.log(id);
+                        fetch(`/providers/${id}`)
                             .then((response) => response.json())
                             .then((res) => {
                                 setProvidersData(res)
@@ -58,7 +58,7 @@ function Table (){
                         <th>Status</th>
                         <th>Provider Id</th>
                         <th>Average Cost per Page (cents)</th>
-                        <th>Materials Turned in At</th>
+                        <th>Materials Turned In At</th>
                         <th>Provider Rating</th>
                         <th>Location Type</th>
                         <th>Latitude</th>
@@ -67,6 +67,53 @@ function Table (){
                 </thead>
                 <tbody>
                     {rows}
+                </tbody>
+            </table>
+            <h3>Display Providers By</h3>
+            <table>
+                <thead>
+                        <th>
+                            <button onClick={() => {
+                                fetch('/providers/turnover')
+                                    .then((response) => response.json())
+                                    .then((res) => {
+                                        setProvidersData(res)
+                                    });
+                                    console.log(providersData)
+                            }}>Materials Turned In At</button>
+                        </th>
+                        <th>
+                            <button onClick={() => {
+                                fetch('/providers')
+                                    .then((response) => response.json())
+                                    .then((res) => {
+                                        setProvidersData(res)
+                                    });
+                                    console.log(providersData)
+                            }}>Distance</button>
+                        </th>
+                        <th>
+                            <button onClick={() => {
+                                fetch('/providers')
+                                    .then((response) => response.json())
+                                    .then((res) => {
+                                        setProvidersData(res)
+                                    });
+                                    console.log(providersData)
+                            }}>Cost</button>
+                        </th>
+                        <th>
+                            <button onClick={() => {
+                                fetch('/providers')
+                                    .then((response) => response.json())
+                                    .then((res) => {
+                                        setProvidersData(res)
+                                    });
+                                    console.log(providersData)
+                            }}>Rating</button>
+                        </th>
+                </thead>
+                <tbody>
                     {subrows}
                 </tbody>
             </table>
