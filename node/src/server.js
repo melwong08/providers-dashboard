@@ -60,7 +60,7 @@ function findProvidersForJob(providers, job) {
     if (job.locationType === 'REMOTE') {
       return providers
     }
-
+  
   let providersRanked = [];
   for (let i = 0; i < providers.length; i++) {
     const provider = providers[i];
@@ -68,8 +68,7 @@ function findProvidersForJob(providers, job) {
     const long = provider.longitude - job.longitude;
     providersRanked.push({score: lat+long, provider})
   }
-
- return providersRanked.sort((a, b) => a.score - b.score);
+  return providersRanked.sort((a, b) => a.score - b.score);
 }
 
 function findStatus(jobs, status) {
