@@ -27,10 +27,8 @@ app.get("/jobs/:id", (req, res) => {
   res.json(job);
 });
 
-app.get("/provders/:id/turnover", (req, res) => {
-  const jobId = req.params.id;
-  const job = findJobById(jobs,jobId);
-  const ratedProviders = findProvidersByTurnover(providers, job);
+app.get("/providers/turnover", (req, res) => {
+  const ratedProviders = findProvidersByTurnover(providers, jobs);
 
   if (ratedProviders.length === 0) res.status(404).send("Provider Not Found");
 
@@ -81,13 +79,25 @@ function findProvidersByLocation(providers, job) {
   return providersRanked.sort((a, b) => a.score - b.score);
 }
 
-function findProvidersByTurnover(providers, job){
-    let jobTurnover = [];
-      for (let j = 0; j < providers.length; j++){
-        if (providers.id === job.providerId && job.materialsTurnInAt.length !== 0){
-          
-        }
+function findProvidersByTurnover(providers, jobs){
+  let jobTurnover = [];
+  providers.forEach((value, index, array) => {
+    let score = 0;
+    //find the jobs they took
+    //subtract dateTime from materialsTurnInAt
+    //add the number to score
+    //push score and provider to jobTurnover
+    for (let i = 0; i < jobs.length; i++){
+      if (jobs[i].providerId === value.id){
+        const date1 = new Date(jobs[i].materialsTurnInAt);
+        const date2 = new Date(jobs[i].dateTime);
+        const newTime = date1 - date2;
+        score += newTime;
       }
+    }
+    jobTurnover.push({score: score, value})
+  })
+  return jobTurnover.sort((a,b) => a.score - b.score)
 }
 
 function findStatus(jobs, status) {
