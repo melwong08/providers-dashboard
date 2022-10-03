@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { application } from 'express';
 import { providers, jobs } from './data/data.js';
 
 const app = express();
@@ -20,7 +20,7 @@ app.get("/jobs/status/:status", (req, res) => {
 
 app.get("/jobs/:id", (req, res) => {
   const jobId = req.params.id;
-  const job = findJobId(jobs, jobId);
+  const job = findJobById(jobs, jobId);
 
   if (job === null) res.status(404).send("Job Not Found");
 
@@ -29,7 +29,7 @@ app.get("/jobs/:id", (req, res) => {
 
 app.get("/providers/:id", (req, res) => {
   const jobId = req.params.id;
-  const job = findJobId(jobId);
+  const job = findJobById(jobs, jobId);
   const sortedProviders = findProvidersForJob(providers, job);
 
   if (sortedProviders.length === 0) res.status(404).send("Provider Not Found");
@@ -49,31 +49,27 @@ app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
-function findProvidersForJob(providers, jobs) {
-  for (let i = 0; i < jobs.length; i++){
-    if (jobs[i].locationType === 'REMOTE') {
-      return providers
-    }
-  }
-
-  let providersRanked = [];
-  for (let i = 0; i < providers.length; i++) {
-    const provider = providers[i];
-    const lat = provider.latitude - jobs.latitude;
-    const long = provider.longitude - jobs.longitude;
-    const score = lat + long;
-    providersRanked.push({score, provider})
-  }
-  console.log(providersRanked)
-
-  return providersRanked.sort((a, b) => a.score - b.score);
-}
-
-function findJobId(jobs, id) {
+function findJobById(jobs, id) {
   for (let i = 0; i < jobs.length; i++) {
     if (jobs[i].id == id) return jobs[i];
   }
   return null;
+}
+
+function findProvidersForJob(providers, job) {
+    if (job.locationType === 'REMOTE') {
+      return providers
+    }
+
+  let providersRanked = [];
+  for (let i = 0; i < providers.length; i++) {
+    const provider = providers[i];
+    const lat = provider.latitude - job.latitude;
+    const long = provider.longitude - job.longitude;
+    providersRanked.push({score: lat+long, provider})
+  }
+
+ return providersRanked.sort((a, b) => a.score - b.score);
 }
 
 function findStatus(jobs, status) {
