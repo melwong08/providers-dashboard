@@ -97,7 +97,7 @@ function findProvidersByLocation(providers, job) {
 
 function findProvidersByTurnover(providers, jobs){
   let jobTurnover = [];
-  providers.forEach((value, index, array) => {
+  providers.forEach((value) => {
     let score = 0;
     for (let i = 0; i < jobs.length; i++){
       if (jobs[i].providerId === value.id){
@@ -114,23 +114,23 @@ function findProvidersByTurnover(providers, jobs){
 
 function findProvidersByCost(providers, jobs){
   let finalCost = [];
-  providers.forEach(value => {
+  providers.forEach(provider => {
     let score = 0;
     let count = 0;
     for (let i = 0; i < jobs.length; i++){
-      if (jobs[i].providerId === value.id){
-        score += jobs.avgCostPerPage;
+      if (jobs[i].providerId === provider.id){
+        score += jobs[i].avgCostPerPage;
         count++;
       }
     }
-    let avgCost = score/count;
-    finalCost.push({cost: avgCost, value})
+    let avgCost = score/(count+1);
+    finalCost.push({avgCost: avgCost, provider: provider.id})
   })
-  return finalCost.sort((a,b) => a.cost - b.cost);
+  return finalCost.sort((a,b) => a.avgCost - b.avgCost);
 }
 
 function findProvidersByRate(providers, jobs){
-
+  
 }
 
 function findStatus(jobs, status) {
