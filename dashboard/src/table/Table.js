@@ -74,16 +74,6 @@ function Table (){
                 <thead>
                         <th>
                             <button onClick={() => {
-                                fetch('/providers/turnover')
-                                    .then((response) => response.json())
-                                    .then((res) => {
-                                        setProvidersData(res)
-                                    });
-                                    console.log(providersData)
-                            }}>Materials Turned In At</button>
-                        </th>
-                        <th>
-                            <button onClick={() => {
                                 fetch('/providers')
                                     .then((response) => response.json())
                                     .then((res) => {
@@ -94,17 +84,27 @@ function Table (){
                         </th>
                         <th>
                             <button onClick={() => {
-                                fetch('/providers')
+                                fetch('/providers/turnover')
                                     .then((response) => response.json())
                                     .then((res) => {
                                         setProvidersData(res)
                                     });
                                     console.log(providersData)
-                            }}>Cost</button>
+                            }}>Materials Turned In At</button>
                         </th>
                         <th>
                             <button onClick={() => {
-                                fetch('/providers')
+                                fetch('/providers/cost')
+                                    .then((response) => response.json())
+                                    .then((res) => {
+                                        setProvidersData(res)
+                                    });
+                                    console.log(providersData)
+                            }}>Average Cost per Page</button>
+                        </th>
+                        <th>
+                            <button onClick={() => {
+                                fetch('/providers/rate')
                                     .then((response) => response.json())
                                     .then((res) => {
                                         setProvidersData(res)
@@ -112,6 +112,12 @@ function Table (){
                                     console.log(providersData)
                             }}>Rating</button>
                         </th>
+                        <tr>
+                            <th>Provider Id</th>
+                            <th>Provider Name</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                        </tr>
                 </thead>
                 <tbody>
                     {subrows}
