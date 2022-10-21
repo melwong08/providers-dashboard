@@ -43,7 +43,7 @@ app.get("/providers/cost", (req, res) => {
   res.json(providersCost);
 })
 
-app.get("providers/rate", (req, res) => {
+app.get("providers/rating", (req, res) => {
   const ratedProviders = findProvidersByRate(providers, jobs);
 
   if (ratedProviders.length === 0) res.status(404).send("Provider Not Found");
@@ -97,17 +97,17 @@ function findProvidersByLocation(providers, job) {
 
 function findProvidersByTurnover(providers, jobs){
   let jobTurnover = [];
-  providers.forEach((value) => {
+  providers.forEach((provider) => {
     let score = 0;
     for (let i = 0; i < jobs.length; i++){
-      if (jobs[i].providerId === value.id){
+      if (jobs[i].providerId === provider.id){
         const date1 = new Date(jobs[i].materialsTurnInAt);
         const date2 = new Date(jobs[i].dateTime);
         const newTime = date1 - date2;
         score += newTime;
       }
     }
-    jobTurnover.push({score: score, value})
+    jobTurnover.push({score: score, provider})
   })
   return jobTurnover.sort((a,b) => a.score - b.score)
 }
@@ -124,13 +124,23 @@ function findProvidersByCost(providers, jobs){
       }
     }
     let avgCost = score/(count+1);
-    finalCost.push({avgCost: avgCost, provider: provider.id})
+    finalCost.push({avgCost: avgCost, provider})
   })
   return finalCost.sort((a,b) => a.avgCost - b.avgCost);
 }
 
 function findProvidersByRate(providers, jobs){
-  
+  let finalRate = [];
+  providers.forEach(provider => {
+    let score = 0;
+    for (let i = 0; i < jobs.length; i++){
+      if (jobs[i].providerId === provider.id && jobs[i].providerRating === true){
+        score ++;
+      }
+    }
+    finalRate.push({rating: score, provider})
+  })
+  return finalRate.sort((a,b) => b.rating - a.rating);
 }
 
 function findStatus(jobs, status) {
