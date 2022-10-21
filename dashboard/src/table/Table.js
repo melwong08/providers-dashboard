@@ -104,7 +104,7 @@ function Table (){
                         </th>
                         <th>
                             <button onClick={() => {
-                                fetch('/providers/rate')
+                                fetch('/providers/rating')
                                     .then((response) => response.json())
                                     .then((res) => {
                                         setProvidersData(res)
