@@ -23,8 +23,10 @@ Backend
 
 ## Built with: 
 - React.js
-- JavaScript
-- HTML 
+- Node.js
+- Express.js
+- HTML
+- CSS
 
 ## Lessons Learned: 
 - how to use correct proxy scripts for proper networking
