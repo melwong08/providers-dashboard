@@ -80,7 +80,7 @@ function Table (){
                                         setProvidersData(res)
                                     });
                                     console.log(providersData)
-                            }}>Distance</button>
+                            }}>Distance (choose job above)</button>
                         </th>
                         <th>
                             <button onClick={() => {
